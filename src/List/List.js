@@ -1,21 +1,15 @@
 import React, { Component } from 'react'
 import "./List.css"
-import ListItem from './ListItem/ListItem'
+import ListItem from '../ListItem/ListItem'
 
 export default class List extends Component {
-    state = {
-        todoList : [
-            "吃饭",
-            "睡觉"
-        ]
-    }
   render() {
     return (
       <div className='outer'>
         {
-            this.state.todoList.map((data, index) => {
+            this.props.father.state.todoList.map((todo) => {
                 return (
-                    <ListItem key={index} content={data}/>
+                    <ListItem key={todo.id} content={todo.content} done={todo.done} father={this.props.father} id={todo.id}/>
                 )
             })
         }
